@@ -1,4 +1,4 @@
-#using R
+
 #################  scad,mcp,lasso
 select<-function(design_matrix_full,Y_full){
    # design_matrix_full<-design_matrix_fullab
