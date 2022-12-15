@@ -4,7 +4,7 @@ select<-function(design_matrix_full,Y_full){
    # design_matrix_full<-design_matrix_fullab
    # Y_full<-Y_fullab
   library(ncvreg)
-  ###蚚cv梑郔蚥腔lambda
+  ###
   scad_cv<-cv.ncvreg(design_matrix_full,Y_full,family = c("gaussian"),penalty = c("SCAD"))
   scad_cv$lambda.min
   mySCAD=ncvreg(design_matrix_full,Y_full,family = c("gaussian"),penalty = c("SCAD"),lambda=scad_cv$lambda.min)
@@ -24,9 +24,9 @@ select<-function(design_matrix_full,Y_full){
   which(ncv_lasso!=0)
   ############ DS
   library(fastclime)
-  b = dantzig(design_matrix_full,Y_full, lambda = 0.5, nlambda = 100)
+  b = dantzig(design_matrix_full,Y_full, lambda = 0.01, nlambda = 100)
   # estimated regression coefficient vector
-  c = dantzig.selector(b$lambdalist, b$BETA0, 25)#郔綴珨跺統杅蜊曹賦彆祥肮
+  c = dantzig.selector(b$lambdalist, b$BETA0, 25)
   which(c!=0)
   
   list(ncv_SCAD,ncv_MCP,ncv_lasso,c)
