@@ -2,7 +2,7 @@
 #fixed n2=12,beta=6,Ma=100,Mb=10,N=100
 
 rm(list=ls())
-setwd("D:/zcw/code")
+
 source("SSD(8,13) Bayesian D-optimal augmented design.r")
 source("SSD(8,13)  Averaged bayesian D-optimal augmented design.r")
 source('select.r')
