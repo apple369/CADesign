@@ -3,7 +3,6 @@
 
 rm(list=ls())
 
-setwd("D:/OneDrive/OneDrive - mail.nankai.edu.cn/醫栠/code(1)/code")
 source("SSD(7,15) Bayesian D-optimal augmented design.r")
 source("SSD(7,15) Averaged bayesian D-optimal augmented design.r")
 source('select.r')
