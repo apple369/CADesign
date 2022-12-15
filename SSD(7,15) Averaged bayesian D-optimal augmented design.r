@@ -3,15 +3,9 @@
 
 library(randtoolbox)
 quasi_integrated_bayes_D<-function(X,nrun,nprimary,nsecondary,npotential,tau,gamma,r){
-   # X<-X_stage_1
-  # tau=sqrt(5)
-  # gamma=10
-  # nrun<-12
-  
-  
+   
   nfactor<-dim(X)[2]+r#add 2 new factors
   nrun1<-dim(X)[1]
-  
   
   design<-matrix(runif(nrun*nfactor,min = -1,max = 1),ncol = nfactor)
   design[,16]<-rep(-1,nrun)
@@ -59,7 +53,6 @@ quasi_integrated_bayes_D<-function(X,nrun,nprimary,nsecondary,npotential,tau,gam
   
   col1<-c(pro2,seq(nfactor-r+1,nfactor))
   col2<-seq(1,nfactor)[(!seq(1,nfactor)%in%col1)&(!seq(1,nfactor)==16)]
-  
   
   ###############
   ddet_o<-intergrated_det(a)
@@ -127,9 +120,6 @@ quasi_integrated_bayes_D<-function(X,nrun,nprimary,nsecondary,npotential,tau,gam
     
   }
   
-  
-  
-  
   model_design<-matrix(c(rep(1,nrun),design[,pro1],design[,pro2],design[,primary[(!primary%in%pro1)&(!primary%in%pro2)]],design[,seq(nfactor-r+1,nfactor)],
                          design[,pro2]^2,design[,seq(nfactor-r+1,nfactor)]^2,
                          #design[,seq(1,15)[!seq(1,15)%in%loc1]]*design[,loc1[1]],
@@ -140,7 +130,6 @@ quasi_integrated_bayes_D<-function(X,nrun,nprimary,nsecondary,npotential,tau,gam
                          design[,potential]#potential
   ),
   nrow = nrun)
-  
-  
+
   list(design,intergrated_det(a))
 }
